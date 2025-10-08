@@ -6,7 +6,12 @@ const article = new mongoose.Schema({
   comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comment'
-  }]
+  }],
+  author: {
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Author"
+  }
 });
 
 module.exports = mongoose.model("Article", article);

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const config = require("./config.js");
 const articleRouter = require("./controllers/article");
 const commentRouter = require('./controllers/comment')
+const authorRouter = require("./controllers/author")
 const PORT = config.port;
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', articleRouter);
 app.use('/', commentRouter)
+app.use("/", authorRouter)
 
 async function startServer() {
   try {
