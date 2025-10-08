@@ -1,4 +1,4 @@
-const mongoose =require('mongoose')
+const mongoose = require("mongoose");
 
 const comment = new mongoose.Schema({
   date: {
@@ -8,6 +8,11 @@ const comment = new mongoose.Schema({
   content: {
     required: true,
     type: String,
+  },
+  article: {
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Article",
   },
 });
 

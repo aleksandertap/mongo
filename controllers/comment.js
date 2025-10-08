@@ -6,6 +6,7 @@ router.post("/comments", async (req, res) => {
   const data = new Comment({
     date: new Date(),
     content: req.body.content,
+    article: req.body.article
   });
   try {
     const dataToSave = await data.save();
@@ -17,7 +18,7 @@ router.post("/comments", async (req, res) => {
 
 router.get("/comments", async (req, res) => {
   try {
-    const data = await Comment.find();
+    const data = await Comment.find().populate('article');
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error });
